@@ -1,0 +1,7 @@
+6 operators for bit manipulation: 
+- bitwise AND : &
+- bitwise inclusive OR : |
+- bitwise exclusive OR : ^
+- left shift : <<
+- right shift : >>
+- one's complement (unary) : ~

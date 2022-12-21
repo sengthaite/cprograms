@@ -1,0 +1,3 @@
+automatic variable
+external variable
+definition and declaration
