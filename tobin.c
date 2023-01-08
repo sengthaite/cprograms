@@ -4,18 +4,40 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAXLENRESULT 1000
 
+int char_to_int(char *s);
 char *to_bin(int);
 char *reverse(char *s);
 
 int main()
 {
-    int c;
-    int decimal = 128;
-    printf("%d to bin: %s\n", decimal, to_bin(decimal));
+    char input[1000], c;
+    int i = 0;
+    while((c = getchar()) != EOF) {
+        if (c != '\n') {
+            input[i++] = c;
+        }
+    }
+    input[i] = '\0';
+    int num = char_to_int(input);
+    printf("%d to bin: %s\n", num, to_bin(num));
     return 0;
+}
+
+int char_to_int(char *s)
+{
+    int result = 0, mul = 1, len = strlen(s) - 1;
+    while (len >= 0) {
+        if (s[len] == '-')
+            return -result;
+        result = (s[len] - '0') * mul + result;
+        mul *= 10;
+        len--;
+    }
+    return result;
 }
 
 char *to_bin(int num)
