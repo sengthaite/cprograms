@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <math.h>
 
 #define MAXOP 100
 #define NUMBER '0'
@@ -40,6 +41,13 @@ int main(void)
             break;
         case '*':
             push(pop() * pop());
+            break;
+        case '%':
+            op2 = pop();
+            if (op2 != 0.0)
+                push(fmod(pop(),op2));
+            else
+                printf("error: zero divisor\n");
             break;
         case '/':
             op2 = pop();
