@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
+#include <string.h>
 
 #define MAXOP 100
 #define NUMBER '0'
@@ -13,6 +14,7 @@ void push(double);
 double pop(void);
 int getch(void);
 void ungetch(int);
+void print_top();
 
 int sp = 0;
 double val[MAXVAL];
@@ -24,6 +26,7 @@ int main(void)
     int type;
     double op2;
     char s[MAXOP];
+    double tmp;
 
     while ((type = getop(s)) != EOF && (type != '\n'))
     {
@@ -56,8 +59,27 @@ int main(void)
             else
                 printf("error: zero divisor\n");
             break;
+        case 'd': // duplicate top element
+            push(val[sp-1]);
+            break;
+        case 't': // print top element
+            if (sp > 0)
+                printf("Top element: %f\n", val[sp-1]);
+            else
+                printf("No top element found!");
+            break;
+        case 's': // swap the top two element
+            if (sp > 1) {
+                tmp = val[sp-2];
+                val[sp-2] = val[sp-1];
+                val[sp-1] = tmp;
+            }
+            break;
+        case 'c': // clear stack
+             sp = 0;
+             break;
         default:
-            printf("error: unknown command %s\n", s);
+            printf("Error: unknown command %s\n", s);
             break;
         }
     }
@@ -89,10 +111,10 @@ int getop(char s[])
     while ((s[0] = c = getch()) == ' ' || c == '\t')
         ;
     s[1] = '\0';
-    if (!isdigit(c) && c != '.')
+    if (!isdigit(c) && c != '.' && c != '-')
         return c;
     i = 0;
-    if (isdigit(c)) 
+    if (c == '-' || isdigit(c)) 
         while (isdigit(s[++i] = c = getch()))
             ;
     if (c == '.')
@@ -101,6 +123,8 @@ int getop(char s[])
     s[i] = '\0';
     if (c != EOF)
         ungetch(c);
+    if (strcmp(s, "-") == 0)
+        return '-';
     return NUMBER;
 }
 
