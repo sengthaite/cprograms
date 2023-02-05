@@ -59,6 +59,15 @@ int main(void)
             else
                 printf("error: zero divisor\n");
             break;
+        case 'S': // sin
+            push(sin(pop()));
+            break;
+        case 'E': // exp
+            push(exp(pop()));
+            break;
+        case 'P': // pow
+            push(pow(pop(), pop()));
+            break;
         case 'd': // duplicate top element
             push(val[sp-1]);
             break;
