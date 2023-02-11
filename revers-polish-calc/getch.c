@@ -4,6 +4,7 @@
 */
 
 #include <stdio.h>
+#include "cal.h"
 
 #define MAXBUF 100
 
@@ -18,7 +19,7 @@ char getch()
 void setch(char ch)
 {
     if (bufp >= MAXBUF)
-        printf("Error: too many character to hold in buf. max 99")
+        printf("Error: too many character to hold in buf. max 99\n");
     else
         buf[bufp++] = ch;
 }
