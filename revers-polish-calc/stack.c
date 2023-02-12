@@ -6,8 +6,8 @@
 
 #define MAXSTACK 1000
 
-double val[1000];
-int sp = 0;
+static double val[1000];
+static int sp = 0;
 
 void push(double value)
 {

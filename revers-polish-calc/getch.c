@@ -8,8 +8,8 @@
 
 #define MAXBUF 100
 
-char buf[MAXBUF];
-int bufp = 0;
+static char buf[MAXBUF];
+static int bufp = 0;
 
 char getch()
 {
