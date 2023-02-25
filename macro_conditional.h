@@ -1,0 +1,1 @@
+#define SOME_MACRO 1234567890
