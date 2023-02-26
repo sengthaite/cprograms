@@ -4,6 +4,7 @@
 
 void reverse(char s[]);
 void itoa(int n, char s[]);
+void _itoa(int, char *);
 
 int main(void)
 {
@@ -17,6 +18,7 @@ int main(void)
 void reverse(char s[])
 {
     int c, i, j;
+    printf("strlen s = %d\n", strlen(s));
     for (i = 0, j = strlen(s) - 1; i < j; i++, j--)
         c = s[i], s[i] = s[j], s[j] = c;
 }

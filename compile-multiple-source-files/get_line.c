@@ -11,3 +11,14 @@ int get_line(char s[], int lim)
     s[i] = '\0';
     return i;
 }
+
+int _getline(char *s, int n)
+{
+    int c;
+    while(n-- > 0 && (c = getchar()) != EOF && c != '\n')
+        *s++ = c;
+    if (c == '\n')
+        *s++ = c;
+    *s = '\0';
+    return c != EOF;
+}
