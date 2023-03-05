@@ -3,6 +3,7 @@ print first character
 */
 
 #include <stdio.h>
+#include <string.h>
 
 int main(void)
 {
@@ -14,6 +15,9 @@ int main(void)
     printf("first char of \"%s\" is \"%c\"\n", text, text[0]);
     printf("first char of \"%s\" is \"%c\"\n", text, *text);
     printf("first char of \"%s\" is \"%c\"\n", text, *textp);
+
+    printf("last char of \"%s\" is \"%c\"\n", text, text[strlen(text) - 1]);
+    printf("last char of \"%s\" is \"%c\"\n", text, ((char *)(&text + 1) - 1)[0]); // not working
 
     printf("address of &text: %p\n", &text);
     printf("address of &cpytext: %p\n", &cpytext);
@@ -29,7 +33,8 @@ int main(void)
     // printf("first char of \"%s\" is \"%c\"\n", another_text, another_text[0]);
     // printf("first char of \"%s\" is \"%c\"\n", another_text, *another_text);
 
-    // char size_text[9] = "size text";
+    char size_text[9] = "size text";
+    printf("last char of size_text: %c\n", ((char *)(&size_text + 1) - 1)[0]);
 
     return 0;
 }
