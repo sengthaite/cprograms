@@ -17,7 +17,9 @@ int main(void)
     printf("first char of \"%s\" is \"%c\"\n", text, *textp);
 
     printf("last char of \"%s\" is \"%c\"\n", text, text[strlen(text) - 1]);
-    printf("last char of \"%s\" is \"%c\"\n", text, ((char *)(&text + 1) - 1)[0]); // not working
+    printf("address of last char %p\n", &text[strlen(text) - 1]);
+    printf("address of last char is %p\n", &(*text));
+    // printf("last char of \"%s\" is \"%c\"\n", text, ((char *)((&(*text)) + 1) - 1)[0]);
 
     printf("address of &text: %p\n", &text);
     printf("address of &cpytext: %p\n", &cpytext);
@@ -34,7 +36,11 @@ int main(void)
     // printf("first char of \"%s\" is \"%c\"\n", another_text, *another_text);
 
     char size_text[9] = "size text";
+    char *size_textp = size_text;
+    printf("address of size_text is %p\n)", &size_text);
+    printf("address of *size_textp is %p\n", &(*size_textp));
     printf("last char of size_text: %c\n", ((char *)(&size_text + 1) - 1)[0]);
+    printf("last char of size_text: %c\n", ((&(*size_textp) + 1) - 1)[0]);
 
     return 0;
 }
