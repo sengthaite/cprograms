@@ -1,6 +1,8 @@
 #include <stdio.h>
 #define MAXLINE 1000
 
+void reversep(char *s);
+
 int main(void)
 {
     int c, i = 0;
@@ -14,3 +16,9 @@ int main(void)
         putchar(line[j]);
     return 0; 
 }
+
+// void reversep(char *s)
+// {
+//     char *p = s;
+//     char *q = (char *)(&)
+// }
