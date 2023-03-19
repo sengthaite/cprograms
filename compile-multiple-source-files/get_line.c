@@ -15,10 +15,11 @@ int get_line(char s[], int lim)
 int _getline(char *s, int n)
 {
     int c;
+    char *tmp = s;
     while(n-- > 0 && (c = getchar()) != EOF && c != '\n')
         *s++ = c;
     if (c == '\n')
         *s++ = c;
     *s = '\0';
-    return c != EOF;
+    return s - tmp;
 }
