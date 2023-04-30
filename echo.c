@@ -2,6 +2,8 @@
 
 int main(int argc, char *argv[]) {
     while (--argc > 0)
-        printf("%s%s\n", *++argv, (argc > 1) ? " " : "");
+        printf((argc > 1) ? "%s " : "%s", *++argv);
+        // printf("%s%s", *++argv, (argc > 1) ? " " : "");
+    printf("\n");
     return 0;
 }
