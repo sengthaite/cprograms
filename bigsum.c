@@ -66,6 +66,8 @@ char *sum(char *n1, char *n2)
     j = max(cn1, cn2) + (isNeedAdditionalByte ? 1 : 0);
     char *result;
     result = malloc(j);
+    free(second_number);
+    free(result);
     while(j > 0)
     {
         int added = first_number[j-1] + second_number[j-1] - (2 * '0') + tmp_add;
